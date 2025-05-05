@@ -1,12 +1,19 @@
 // import the express module
 const express = require('express');
 const admin = require('firebase-admin');
-const serviceAccount = require('./serviceAccount.json');
+const dotenv =  require("dotenv")
+dotenv.config()
+
+
+
+// const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
 // import the mysql module
 const mysql = require('mysql2');
 const app = express();
 const { getFirestore } = require('firebase-admin/firestore');
-
+const serviceAccount = JSON.parse(
+  Buffer.from(process.env.SERVICE_ACCOUNT_KEY, 'base64').toString('utf8')
+);
 
 
 admin.initializeApp({
@@ -54,9 +61,11 @@ pool.connect((err) => {
 app.use(express.json()); // Middleware to parse JSON request bodies
 
 // create a simple get request handler to send a response
-app.get('/', (req, res) => {
-    res.send('Hello, this is a simple GET request response!');
+app.get("/",(req,res) => {
+  res.status(200).json({
+      message:"Succes !",
   });
+});
  
 // post request handler to add a new employee to the database
 // app.post('/add-employee', (req, res) => {
