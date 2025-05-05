@@ -1,7 +1,7 @@
 // import the express module
 const express = require('express');
 const admin = require('firebase-admin');
-const serviceAccount = require('./firestore/serviceAccount.json');
+const serviceAccount = require('./serviceAccount.json');
 // import the mysql module
 const mysql = require('mysql2');
 const app = express();
