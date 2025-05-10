@@ -49,14 +49,15 @@ app.use((req, res, next) => {
 
 // create a connection pool to the database
 const pool = mysql.createConnection(dbConfig);
+
 //Connect to the database
-pool.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err);
-        return;
-    }
-    console.log('Connected to the database!');
-});
+// pool.connect((err) => {
+//     if (err) {
+//         console.error('Error connecting to the database:', err);
+//         return;
+//     }
+//     console.log('Connected to the database!');
+// });
 
 app.use(express.json()); // Middleware to parse JSON request bodies
 
